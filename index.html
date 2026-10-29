@@ -1,0 +1,261 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl" data-theme="dark">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>نِـيـوم | NEOM The Line & Sindalah 3D Futuristic Experience</title>
+  <meta name="description" content="تجربة ثلاثية الأبعاد تفاعلية تحاكي مشاريع نيوم المستقبلية (ذا لاين، أوكساجون، تروجينا، سندالة). فكرة وتطوير: أ. طارق ابوعشي" />
+  <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><circle cx='50' cy='50' r='45' fill='%23020617' stroke='%2300f0ff' stroke-width='4'/><text x='50%' y='56%' font-size='32' font-weight='900' fill='%2300f0ff' text-anchor='middle' dominant-baseline='middle'>N</text></svg>" />
+  <script type="module" crossorigin src="./assets/index-8aK-i1EY.js"></script>
+  <link rel="stylesheet" crossorigin href="./assets/index-CAmnJ7tD.css">
+</head>
+<body>
+  <!-- 3D WebGL Canvas Layer -->
+  <div id="webgl-canvas-container"></div>
+
+  <!-- HUD Interface Overlay -->
+  <div class="hud-overlay">
+    <!-- Top Header Navigation -->
+    <header class="hud-header hud-interactive glass-panel">
+      <div class="brand-section">
+        <div class="neom-logo-glow">N</div>
+        <div class="brand-text">
+          <h1 id="lbl-app-title">نِـيـوم | تجربة المستقبل ثلاثية الأبعاد</h1>
+          <p id="lbl-app-subtitle">ذا لاين، أوكساجون، تروجينا، سندالة — عاصمة المستقبل</p>
+        </div>
+        <div class="creator-badge" id="lbl-creator-badge">
+          <span>⚡</span>
+          <span id="lbl-creator-name">أ. طارق ابوعشي</span>
+        </div>
+      </div>
+
+      <div class="header-controls">
+        <div class="creator-badge" style="background: rgba(16, 185, 129, 0.1); border-color: rgba(16, 185, 129, 0.3); color: #10b981;">
+          <span id="live-clock">12:00:00 KSA</span>
+        </div>
+
+        <button class="hud-btn" id="btn-drone-cam" title="Drone Fly-Through">
+          <span>🚁</span>
+          <span id="lbl-drone-cam">جولة الدرون</span>
+        </button>
+
+        <button class="hud-btn" id="btn-reset-cam" title="Reset Camera">
+          <span>🎯</span>
+          <span id="lbl-reset-cam">ضبط المنظور</span>
+        </button>
+
+        <button class="hud-btn" id="btn-audio" title="Audio Soundscape">
+          <div class="audio-visualizer-bar">
+            <div class="audio-bar"></div>
+            <div class="audio-bar"></div>
+            <div class="audio-bar"></div>
+            <div class="audio-bar"></div>
+          </div>
+          <span id="lbl-audio">الصوت</span>
+        </button>
+
+        <button class="hud-btn" id="btn-lang" title="Toggle Language">
+          <span>🌐</span>
+          <span id="lbl-lang">EN</span>
+        </button>
+
+        <button class="hud-btn" id="btn-theme" title="Toggle Theme">
+          <span id="theme-icon">🌙</span>
+        </button>
+
+        <button class="hud-btn" id="btn-about" title="About Platform">
+          <span>ℹ️</span>
+        </button>
+      </div>
+    </header>
+
+    <!-- Main HUD Flanks -->
+    <main class="hud-body">
+      <!-- Left Sector Hologram Explorer -->
+      <section class="sector-panel glass-panel" id="panel-sector">
+        <div class="sector-header">
+          <h2 id="sector-title">ذا لاين (THE LINE)</h2>
+          <div class="sector-tagline" id="sector-tagline">ثورة في الحياة الحضرية تضع الإنسان أولاً</div>
+        </div>
+        
+        <p class="sector-desc" id="sector-desc">
+          مدينة خطية ثورية تمتد بطول 170 كيلومتراً وارتفاع 500 متر وعرض 200 متر فقط. بلا سيارات، بلا شوارع، وصفر انبعاثات كربونية.
+        </p>
+
+        <div class="specs-grid" id="specs-grid">
+          <!-- Populated by JS -->
+        </div>
+
+        <div class="innovations-list" id="innovations-list">
+          <!-- Populated by JS -->
+        </div>
+      </section>
+
+      <!-- Right Simulators Matrix -->
+      <section class="sim-panel glass-panel" id="panel-simulator">
+        <div class="sim-tabs">
+          <button class="sim-tab-btn active" id="tab-maglev">قطار ماجليف الفائق</button>
+          <button class="sim-tab-btn" id="tab-energy">شبكة الطاقة النظيفة 100%</button>
+        </div>
+
+        <!-- Maglev Simulator Body -->
+        <div id="maglev-content" class="maglev-form">
+          <div class="station-select-group">
+            <label id="lbl-maglev-origin">محطة الانطلاق</label>
+            <select id="maglev-origin" class="cyber-select">
+              <option value="theline" selected>ذا لاين (The Line Hub)</option>
+              <option value="oxagon">أوكساجون (Oxagon Port)</option>
+              <option value="trojena">تروجينا (Trojena Alpine)</option>
+              <option value="sindalah">سندالة (Sindalah Marina)</option>
+            </select>
+          </div>
+
+          <div class="station-select-group">
+            <label id="lbl-maglev-dest">محطة الوصول</label>
+            <select id="maglev-dest" class="cyber-select">
+              <option value="theline">ذا لاين (The Line Hub)</option>
+              <option value="oxagon" selected>أوكساجون (Oxagon Port)</option>
+              <option value="trojena">تروجينا (Trojena Alpine)</option>
+              <option value="sindalah">سندالة (Sindalah Marina)</option>
+            </select>
+          </div>
+
+          <div class="maglev-telemetry-box">
+            <div class="spec-item">
+              <div class="spec-label" id="lbl-maglev-dist">المسافة المقطوعة</div>
+              <div class="spec-value" id="val-maglev-dist">62.5 كم</div>
+            </div>
+            <div class="spec-item">
+              <div class="spec-label" id="lbl-maglev-eta">زمن الرحلة التقديري</div>
+              <div class="spec-value" id="val-maglev-eta" style="color: var(--neon-cyan);">9.1 دقيقة</div>
+            </div>
+            <div class="spec-item">
+              <div class="spec-label" id="lbl-maglev-speed">السرعة التشغيلية</div>
+              <div class="spec-value" id="val-maglev-speed">510 كم/س</div>
+            </div>
+            <div class="spec-item">
+              <div class="spec-label" id="lbl-maglev-gforce">قوة التسارع</div>
+              <div class="spec-value" id="val-maglev-gforce" style="color: var(--neon-gold);">0.42 G</div>
+            </div>
+          </div>
+
+          <button class="launch-btn" id="btn-maglev-launch">
+            <span>🚀</span>
+            <span id="lbl-maglev-launch">إطلاق الكبسولة فائقة السرعة</span>
+          </button>
+        </div>
+
+        <!-- Energy Simulator Body -->
+        <div id="energy-content" class="maglev-form" style="display: none;">
+          <div class="energy-slider-group">
+            <div class="slider-header">
+              <span id="lbl-solar">سطوع الإشعاع الشمسي (تبوك)</span>
+              <strong id="val-solar-gw" style="color: var(--neon-gold);">18.7 GW</strong>
+            </div>
+            <input type="range" min="0" max="100" value="85" class="cyber-slider" id="slider-solar" />
+          </div>
+
+          <div class="energy-slider-group">
+            <div class="slider-header">
+              <span id="lbl-wind">سرعة الرياح (خليج العقبة)</span>
+              <strong id="val-wind-gw" style="color: var(--neon-cyan);">8.2 GW</strong>
+            </div>
+            <input type="range" min="0" max="100" value="70" class="cyber-slider" id="slider-wind" />
+          </div>
+
+          <div class="energy-slider-group">
+            <div class="slider-header">
+              <span id="lbl-hydrogen">إنتاج مصنع هيليوس للهيدروجين</span>
+              <strong id="val-hydrogen-gw" style="color: var(--neon-emerald);">7.2 GW</strong>
+            </div>
+            <input type="range" min="0" max="100" value="80" class="cyber-slider" id="slider-hydrogen" />
+          </div>
+
+          <div class="energy-metrics-grid">
+            <div class="spec-item">
+              <div class="spec-label" id="lbl-energy-gen">إجمالي التوليد</div>
+              <div class="spec-value" id="val-energy-gen" style="color: var(--neon-cyan);">34.1 GW</div>
+            </div>
+            <div class="spec-item">
+              <div class="spec-label" id="lbl-energy-demand">حمل المدينة</div>
+              <div class="spec-value" id="val-energy-demand">16.2 GW</div>
+            </div>
+            <div class="spec-item">
+              <div class="spec-label" id="lbl-energy-battery">احتياطي البطاريات</div>
+              <div class="spec-value" id="val-energy-battery" style="color: var(--neon-emerald);">48,500 MWh</div>
+            </div>
+            <div class="spec-item">
+              <div class="spec-label" id="lbl-energy-carbon">الكربون المحيّد</div>
+              <div class="spec-value" id="val-energy-carbon">15,345 طن/س</div>
+            </div>
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <!-- Bottom Control Dock -->
+    <footer class="hud-bottom hud-interactive glass-panel">
+      <!-- Sector Warper Pills -->
+      <div class="sector-nav-pills">
+        <button class="sector-pill active" data-sector="theline" id="pill-theline">
+          <span>🏙️</span>
+          <span>ذا لاين</span>
+        </button>
+        <button class="sector-pill" data-sector="oxagon" id="pill-oxagon">
+          <span>⚓</span>
+          <span>أوكساجون</span>
+        </button>
+        <button class="sector-pill" data-sector="trojena" id="pill-trojena">
+          <span>🏔️</span>
+          <span>تروجينا</span>
+        </button>
+        <button class="sector-pill" data-sector="sindalah" id="pill-sindalah">
+          <span>🏝️</span>
+          <span>سندالة</span>
+        </button>
+      </div>
+
+      <!-- Atmosphere Switcher -->
+      <div class="atmosphere-switcher">
+        <button class="atmo-btn" data-atmo="day" id="atmo-day" title="Day Cyberpunk">☀️</button>
+        <button class="atmo-btn" data-atmo="sunset" id="atmo-sunset" title="Golden Sunset">🌅</button>
+        <button class="atmo-btn active" data-atmo="neon" id="atmo-neon" title="Neon Obsidian">🌌</button>
+        <button class="atmo-btn" data-atmo="frost" id="atmo-frost" title="Trojena Blizzard">❄️</button>
+      </div>
+
+      <!-- Realtime Telemetry -->
+      <div class="telemetry-footer">
+        <div class="telemetry-tag">
+          <span>FPS:</span>
+          <span class="telemetry-val" id="metric-fps">60</span>
+        </div>
+        <div class="telemetry-tag">
+          <span>Triangles:</span>
+          <span class="telemetry-val" id="metric-poly">48.2K</span>
+        </div>
+        <div class="telemetry-tag">
+          <span>Coordinates:</span>
+          <span class="telemetry-val" id="metric-coords">28°00'N 35°12'E</span>
+        </div>
+      </div>
+    </footer>
+  </div>
+
+  <!-- About & Architecture Modal -->
+  <div class="modal-overlay" id="about-modal">
+    <div class="modal-card">
+      <div class="modal-title" id="modal-title">نِـيـوم | منصة الميتافيرس ثلاثية الأبعاد</div>
+      <div class="modal-body" id="modal-desc">
+        بيئة محاكاة تفاعلية ثلاثية الأبعاد فائقة الدقة تجسد معالم وتكنولوجيا مشروع نيوم الاستثنائي (ذا لاين، أوكساجون، تروجينا، سندالة). تجمع المنصة بين محرك رسومي متطور Three.js ومحاكيات فيزيائية واقعية للقطارات المغناطيسية الفائقة وشبكات الطاقة المتجددة 100%.
+      </div>
+      <div class="modal-signature">
+        <div><strong>الهندسة والبرمجة والتطوير المعماري:</strong></div>
+        <div style="color: var(--neon-cyan); font-weight: 700; margin-top: 4px;">أ. طارق ابوعشي</div>
+        <div style="font-size: 0.78rem; color: var(--text-muted); margin-top: 2px;">كبير مهندسي النظم والمطور الإبداعي للمنصة</div>
+      </div>
+      <button class="modal-close-btn" id="modal-close-btn">إغلاق</button>
+    </div>
+  </div>
+
+</body>
+</html>
